@@ -58,7 +58,7 @@ def write_on_log(filename, line):
 CurrWorkDir = os.getcwd()
 
 # Define the path of where the photos are going to be and their names
-DOWNLOADED_IMAGE_PATH = CurrWorkDir + '/photos/'
+DOWNLOADED_IMAGE_PATH = '/home/maxim/Pictures/Wallpapers/'
 downloaded_photoname = 'DSCOVR.png'
 downloaded_photoname_2 = 'DSCOVR2.png'
 
@@ -74,7 +74,7 @@ found_photo = 0
 # Starting from today, it will go back in time day by day (up to 1 month)
 # until it finds a photo with the time within 2 hours of the present time.
 # This allows to avoid some breaks which happen when the satellite does not upload new photos.
-for deltaDay in range(0, 30):
+for deltaDay in range(-1, 30):
 
 	delta_day = datetime.timedelta(days=deltaDay)
 	photo_day = today - delta_day
@@ -112,13 +112,13 @@ for deltaDay in range(0, 30):
 	rel_photo_timestamp = []
 	for datecode in photo_datecode:
 		date_time = datetime.datetime(int(datecode[0:4]), int(datecode[4:6]), int(datecode[6:8]), int(datecode[8:10]), int(datecode[10:12]), int(datecode[12:14]))
-		rel_photo_timestamp.append( abs((date_time - datetime.datetime(1970, 1, 1)).total_seconds() - timestamp_photo_day ))
+		rel_photo_timestamp.append( abs((date_time - datetime.datetime(1970, 1, 1)).total_seconds() - (60*60*12) - timestamp_photo_day ))
 	
 	# I find the instance in the list closer in time with the present time
 	min_deltat_index = rel_photo_timestamp.index(min(rel_photo_timestamp))
 	
-	# I want the photo to be within 2 hours of the present time, otherwise I search for a previous day
-	if min(rel_photo_timestamp) < 2 * 3600:
+	# I want the photo to be within 12 hours of the present time, otherwise I search for a previous day
+	if min(rel_photo_timestamp) < 12 * 3600:
 		found_photo = 1
 		break
 
@@ -133,18 +133,20 @@ if found_photo == 1:
 	# This is the datecode of the photo I will download
 	datecode = photo_datecode[min_deltat_index]
 	photo_datetime = datetime.datetime(int(datecode[0:4]), int(datecode[4:6]), int(datecode[6:8]), int(datecode[8:10]), int(datecode[10:12]), int(datecode[12:14]))
-
-	baseurl = 'http://epic.gsfc.nasa.gov/epic-archive/png/epic_1b_'
-	endurl = '_01.png'
-	photourl = baseurl + datecode + endurl
-
+	#print(datecode)
+	baseurl = 'https://epic.gsfc.nasa.gov/archive/natural/'
+	date_folder = str(datecode[0:4])+"/"+str(datecode[4:6])+"/"+str(datecode[6:8])
+	endurl = '.png'
+	filename = "/png/epic_1b_"
+	photourl = baseurl + date_folder + filename + datecode + endurl
+	#print(photourl)
 	# It downloads the photo
 	download_check = download_photo(photourl, downloaded_photoname)
 
 	if download_check == 0:
 		# sometimes the photo filename ends by 00 and other times by 01, this checks both cases
 		endurl = '_00.png'
-		photourl = baseurl + datecode + endurl
+		photourl = baseurl+date_folder + filename + datecode + endurl
 		
 		# It downloads the photo
 		download_check = download_photo(photourl, downloaded_photoname)
@@ -152,7 +154,7 @@ if found_photo == 1:
 
 	if download_check == 1:
 		# It makes a second copy. This is only needed for MacOSX in order to correctly refresh the wallpaper
-		shutil.copy2(DOWNLOADED_IMAGE_PATH + downloaded_photoname, DOWNLOADED_IMAGE_PATH + downloaded_photoname_2)
+		#shutil.copy2(DOWNLOADED_IMAGE_PATH + downloaded_photoname, DOWNLOADED_IMAGE_PATH + downloaded_photoname_2)
 	
 		to_print_2 = ' Photo time = ' + photo_datetime.strftime("%Y-%m-%d %H:%M:%S") + ' GMT. URL: ' + photourl
 
@@ -166,7 +168,7 @@ else:
 
 
 # Write on the log.txt file
-write_on_log('log.txt', to_print_1 + to_print_2)
+write_on_log(CurrWorkDir+'/log.txt', to_print_1 + to_print_2)
 
 
 # The End

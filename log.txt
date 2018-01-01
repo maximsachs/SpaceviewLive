@@ -1,0 +1,8 @@
+Script time = 2018-01-01 13:00:01 GMT. Photo time = 2017-12-30 22:31:52 GMT. URL: https://epic.gsfc.nasa.gov/archive/natural/2017/12/30/png/epic_1b_20171230223152.png
+Script time = 2018-01-01 12:50:02 GMT. Photo time = 2017-12-30 20:43:49 GMT. URL: https://epic.gsfc.nasa.gov/archive/natural/2017/12/30/png/epic_1b_20171230204349.png
+Script time = 2018-01-01 12:49:24 GMT. Photo time = 2017-12-30 20:43:49 GMT. URL: https://epic.gsfc.nasa.gov/archive/natural/2017/12/30/png/epic_1b_20171230204349.png
+Script time = 2018-01-01 12:48:58 GMT. Photo time = 2017-12-30 02:43:18 GMT. URL: https://epic.gsfc.nasa.gov/archive/natural/2017/12/30/png/epic_1b_20171230024318.png
+Script time = 2018-01-01 12:45:56 GMT. Photo time = 2017-12-30 02:43:18 GMT. URL: https://epic.gsfc.nasa.gov/archive/natural/2017/12/30/png/epic_1b_20171230024318.png
+Script time = 2017-12-31 13:30:01 GMT. Photo time = 2017-12-30 02:43:18 GMT. URL: https://epic.gsfc.nasa.gov/archive/natural/2017/12/30/png/epic_1b_20171230024318.png
+Script time = 2017-12-31 13:29:10 GMT. Photo time = 2017-12-30 02:43:18 GMT. URL: https://epic.gsfc.nasa.gov/archive/natural/2017/12/30/png/epic_1b_20171230024318.png
+Script time = 2017-12-31 13:28:30 GMT. Photo time = 2017-12-30 13:31:37 GMT. URL: https://epic.gsfc.nasa.gov/archive/natural/2017/12/30/png/epic_1b_20171230133137.png
