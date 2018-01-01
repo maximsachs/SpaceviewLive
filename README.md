@@ -30,31 +30,8 @@ The script needs:
 
 Both should come by default in all Unix systems (Linux and Mac).
 
-Instructions for Mac
------------------------
 
-Once the SpaceviewLive folder is copied somewhere on your mac:
-
-0. Double click on install.command.
-   A folder /photos/ is created (within the folder where the script is installed) and the photos are downloaded inside.
-   Every 30 minutes the script will check for an update on the DSCOVR website.
-
-0. With MacOSX, in order to put these pictures as wallpaper and make it refresh automatically:
-	- Open ‘System Preferences’
-	- Click on ‘Desktop & Screen Saver’
-	- Click on the ‘Desktop’ tab
-	- Click on the ‘+’ on the left-hand side and add the /photos/ folder
-	- Select the checkbox ‘Change picture’ and select 15 minutes (or lower)
-	- Select ‘Adapt to Screen’ and change the background color to black.
-	- You can select ‘Random order’, it works independently of this.
-	- In a very similar way you can create an awesome screen saver!
-
-0. *Enjoy the view!*
-
-
-*Note:* There are two identical photos in the /photos/ folder in order to force MacOS X to refresh them correctly.
-
-Instructions for any Unix system
+Instructions for any Ubuntu 17.10
 -----------
 
 0. Put the files DSCOVR.py and install_shell.sh in a folder.
@@ -68,7 +45,9 @@ Instructions for any Unix system
 
 0. From the terminal, the list of active crone jobs can be checked with the command `crontab -l`
 
-0. Select the /photos/ folder in your wallpaper preferences (the precise way depends on the system).
+0. Modify the DISCOVR script to point to the wallpaper folder of your username. Then open the Ubuntu 17.10 Settings and select DSCOVR.png in your wallpaper folder as background.
+
+0. To scale the picture properly either install genome tweak utilities or use: gsettings set org.gnome.desktop.background picture-options "scaled"
 
 Uninstall
 -----------
